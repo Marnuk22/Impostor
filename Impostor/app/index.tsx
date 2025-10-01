@@ -22,18 +22,20 @@ export default function App() {
   const handleIncrementJugadores = () => {
         setTotalJugadores(prev => Math.min(prev + 1, MAX_JUGADORES));
   };
-  const handleDecrementJugadores = () => {
-    const valorJugadoresFinal = Math.max(totalJugadores - 1, MIN_JUGADORES);
-    if (valorJugadoresFinal === totalJugadores) {
-      return; // No hay cambio
+const handleDecrementJugadores = () => {
+    const nuevoTotalJugadores = Math.max(totalJugadores - 1, MIN_JUGADORES);
+    // 1. Si no hay cambio, salimos (Evita updates innecesarios)
+    if (nuevoTotalJugadores === totalJugadores) {
+        return; 
     }
-    // Ajusta el número de impostores si es necesario
-    const nuevoMaximoImpostores = Math.max(3, Math.floor(valorJugadoresFinal / 3));
+    setTotalJugadores(nuevoTotalJugadores);
+    const nuevoMaximoImpostores = Math.max(MIN_IMPOSTORES, Math.floor(nuevoTotalJugadores / 3));
+
+    // 2. Ajustar el estado de los impostores si el valor actual excede el nuevo máximo
     if (totalImpostores > nuevoMaximoImpostores) {
-      setTotalImpostores(nuevoMaximoImpostores);
+        setTotalImpostores(nuevoMaximoImpostores);
     }
-    return valorJugadoresFinal;
-  };
+};
   const handleIncrementImpostores = () => {
     if (totalImpostores < MAX_IMPOSTORES) {
       setTotalImpostores(totalImpostores + 1);
