@@ -133,7 +133,7 @@ export default function App() {
           </Animated.View>
 
           {/* JUGADORES */}
-            <Text style={[styles.etiqueta, { backgroundColor: '#000000' }]}>JUGADORES</Text>
+            <Text style={styles.etiqueta}>JUGADORES</Text>
 
             <View style={styles.botonera}>
               <Pressable onPress={handleDecrementJugadores} style={styles.botonPress}>
@@ -150,7 +150,7 @@ export default function App() {
             </View>
 
           {/* IMPOSTORES */}
-            <Text style={[styles.etiqueta, { backgroundColor: '#b60a0ac7' }]}>IMPOSTORES</Text>
+            <Text style={styles.etiqueta}>IMPOSTORES</Text>
 
             <View style={styles.botonera}>
               <Pressable onPress={handleDecrementImpostores} style={styles.botonPress}>
@@ -227,42 +227,42 @@ const styles = StyleSheet.create({
 
   etiqueta: {
     color: '#FFFFFF',
-    fontSize: 22,
+    fontSize: 40,
     fontWeight: 'bold',
     paddingVertical: 15,
     marginBottom: 20,
     textAlign: 'center',
-    width: '100%',
+    width: "100%",
   },
 
   numero: {
     color: '#FFFFFF',
-    fontSize: 36,
+    fontSize: 56,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginTop: -36,
+    marginTop: -30,
   },
 
   botonera: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '65%',
+    width: '70%',
     marginTop: 5,
   },
 
   botonPress: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 40, 
+    marginBottom: 30, 
   },
 
   boton: {
-    width: 55,
-    height: 55,
+    width: 58,
+    height: 58,
     textAlign: 'center',
     textAlignVertical: 'center',
-    fontSize: 26,
+    fontSize: 30,
     fontWeight: 'bold',
     color: '#FFFFFF',
     backgroundColor: '#000000ff',

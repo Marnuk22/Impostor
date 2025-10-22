@@ -7,7 +7,7 @@ export default function RootLayout() {
     return (
     // ESTO ES LO ÚNICO QUE DEBES HACER:
     <GameProvider> 
-        <Stack>
+        <Stack screenOptions={{ headerShown: false }}>
         {/* Aquí irán todas tus pantallas (index, tarjeta, fase3, etc.) */}
         </Stack>
     </GameProvider>
