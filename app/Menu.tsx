@@ -95,7 +95,7 @@ export default function App() {
     }
   };
 
-  const handleStartGame1 = () => {
+  const handleRenombre = () => {
     router.push("/Nombramiento")
   }
 
@@ -183,8 +183,15 @@ export default function App() {
 
           {/* BOTÓN JUGAR */}
           <Animated.View style={{ transform: [{ scale: pulseJugar }] }}>
-            <Pressable onPress={handleStartGame1} style={styles.botonJugar}>
+            <Pressable onPress={handleRenombre} style={styles.botonJugar}>
               <Text style={styles.textoJugar}>NOMBRES</Text>
+            </Pressable>
+          </Animated.View>
+
+          {/* BOTÓN JUGAR */}
+          <Animated.View style={{ transform: [{ scale: pulseJugar }] }}>
+            <Pressable onPress={handleRenombre} style={styles.botonJugar}>
+              <Text style={styles.textoJugar}>CATERGORIAS</Text>
             </Pressable>
           </Animated.View>
 
@@ -237,9 +244,10 @@ const styles = StyleSheet.create({
 
   etiqueta: {
     color: '#FFFFFF',
-    fontSize: 40,
+    marginTop: -10,
+    fontSize: 30,
     fontWeight: 'bold',
-    paddingVertical: 15,
+    paddingVertical: 12,
     marginBottom: 20,
     textAlign: 'center',
     width: "100%",
@@ -247,7 +255,7 @@ const styles = StyleSheet.create({
 
   numero: {
     color: '#FFFFFF',
-    fontSize: 56,
+    fontSize: 50,
     fontWeight: 'bold',
     textAlign: 'center',
     marginTop: -30,

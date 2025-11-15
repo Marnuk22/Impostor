@@ -98,7 +98,12 @@ export default function SlidingCard() {
         </Pressable>
 
         {/* BOTÓN SIGUIENTE */}
-        <Pressable style={styles.button} onPress={handleNextPlayer}>
+        <Pressable style={styles.button} onPress={flipCard}>
+          <Text style={styles.buttonText}>voltear</Text>
+        </Pressable>
+
+        {/* BOTÓN SIGUIENTE */}
+        <Pressable style={styles.button0} onPress={handleNextPlayer}>
           <Text style={styles.buttonText}>SIGUIENTE</Text>
         </Pressable>
 
@@ -155,6 +160,10 @@ const styles = StyleSheet.create({
 
   button: {
     marginTop: 550,
+    padding: 15,
+  },
+  button0: {
+    marginTop: 5,
     padding: 15,
   },
 
