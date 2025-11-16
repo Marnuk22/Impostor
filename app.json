@@ -23,7 +23,8 @@
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/favicon.png",
+      "baseUrl": "/Impostor/"
     },
     "plugins": [
       "expo-router",
@@ -49,9 +50,6 @@
       "eas": {
         "projectId": "36281591-e437-4fce-a852-9a097e4d073d"
       }
-    }
-    "web": {
-      "baseUrl": "/Impostor/"
     }
   }
 }

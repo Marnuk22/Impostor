@@ -1,7 +1,7 @@
 // app/index.tsx
+import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { useGame } from './GameContext';
 
 export default function PaginaDeInicio() {
