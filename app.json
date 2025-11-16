@@ -50,5 +50,8 @@
         "projectId": "36281591-e437-4fce-a852-9a097e4d073d"
       }
     }
+    "web": {
+      "baseUrl": "/Impostor/"
+    }
   }
 }
