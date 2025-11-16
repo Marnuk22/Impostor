@@ -1,5 +1,6 @@
 // app/index.tsx
 import { LinearGradient } from 'expo-linear-gradient';
+import { Link } from 'expo-router';
 import React from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
 import { useGame } from './GameContext';
@@ -7,7 +8,6 @@ import { useGame } from './GameContext';
 export default function PaginaDeInicio() {
     const { 
         setJuegoElegido,
-        handleGoTo
     } = useGame();
 
     return (
@@ -20,17 +20,18 @@ export default function PaginaDeInicio() {
 
             <Text style={styles.tituloPrincipal}>ELEGIR UNO</Text>
 
-            {/* BOTÓN JUEGO IMPOSTOR */}
-            <Pressable 
-                onPress={() => {
-                    setJuegoElegido("impostor");
-                    handleGoTo();
-                }} 
-                style={styles.boton}
-            >
-                <Text style={styles.botonTexto}>IMPOSTOR</Text>
-            </Pressable>
-
+            {/* BOTÓN JUEGO IMPOSTOR */}<Link href="/MenuImpostor" asChild>
+                <Pressable 
+                    onPress={() => {
+                        // El onPress AHORA SOLO se encarga de la lógica
+                        setJuegoElegido("impostor");
+                        // La navegación la hace el <Link>
+                    }} 
+                    style={styles.boton}
+                >
+                    <Text style={styles.botonTexto}>IMPOSTOR</Text>
+                </Pressable>
+            </Link>
             {/* BOTÓN MÁS O MENOS (DESACTIVADO) */}
             <Pressable 
                 onPress={() => {}}
