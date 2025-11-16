@@ -78,7 +78,7 @@ export default function SlidingCard() {
               imageStyle={{ opacity: 0.15 }}
             >
               {/* NOMBRE DEL JUGADOR */}
-              <Text style={styles.cardText}>{nombreJugador}</Text>
+              <Text style={styles.cardText}>{jugadorActual?.name || `jugador ${jugadorActual?.id}`} </Text>
 
               {/* POSICIÓN 1/5 */}
               <Text style={styles.subInfo}>

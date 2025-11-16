@@ -1,7 +1,7 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import React from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { useGame } from './GameContext';
 
 export default function FinDelJuegoTabla() {
@@ -41,7 +41,7 @@ export default function FinDelJuegoTabla() {
                                     isEliminated && (esImpostor ? styles.playerImpostor : styles.playerCrewmate)
                                 ]}
                             >
-                                <Text style={styles.playerName}>{player.name}</Text>
+                                <Text style={styles.playerName}> {player.name ? player.name : `jugador ${player.id}`}</Text>
 
                                 {isEliminated && (
                                     <Text style={styles.playerRole}>
