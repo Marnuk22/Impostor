@@ -1,16 +1,13 @@
-// app/Nombramiento.tsx
 import React from 'react';
 import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useGame } from './GameContext';
 
-
 export default function NombramientoScreen() {
     
-    // Obtenemos todo lo que necesitamos del contexto
     const { 
         players, 
         renombraPlayer, 
-        handleStartGame // <-- ¡Usamos la MISMA función que el Menú!
+        handleStartGame 
     } = useGame();
 
     return (
@@ -21,7 +18,10 @@ export default function NombramientoScreen() {
                 <View key={player.id} style={styles.playerRow}>
                     <TextInput
                         style={styles.input}
-                        value={player.name}
+                        defaultValue={player.name}
+                        value={player.name === "" ? undefined : player.name} 
+                        placeholder="Ingresar nombre..."
+                        placeholderTextColor="#777"
                         onChangeText={(newName) => {
                             renombraPlayer(player.id, newName);
                         }}
@@ -30,10 +30,9 @@ export default function NombramientoScreen() {
             ))}
 
             <View style={styles.buttonContainer}>
-                {/* ESTE ES EL BOTÓN "JUGAR" */}
                 <Button
                     title="Repartir Cartas"
-                    onPress={handleStartGame} // Llama a la lógica del contexto
+                    onPress={handleStartGame} 
                 />
             </View>
         </ScrollView>
@@ -42,44 +41,44 @@ export default function NombramientoScreen() {
 
 const styles = StyleSheet.create({
 
-container: {
+    container: {
         flex: 1,
-        backgroundColor: '#121212', // Un fondo oscuro
+        backgroundColor: '#121212', 
     },
-    // Contenedor del Scroll
+
     scrollContent: {
-        paddingHorizontal: 20, // Espacio a los lados
-        paddingVertical: 30, // Espacio arriba y abajo
+        paddingHorizontal: 20, 
+        paddingVertical: 30, 
     },
-    // Título principal
+
     title: {
         paddingTop: 100,
         fontSize: 32,
         fontWeight: 'bold',
         color: '#FFFFFF',
         textAlign: 'center',
-        marginBottom: 30, // Espacio debajo del título
+        marginBottom: 30, 
     },
-    // Fila para cada jugador
+
     playerRow: {
-        marginBottom: 15, // Espacio entre cada input
+        marginBottom: 15, 
     },
-    // El input para el nombre
+
     input: {
-        backgroundColor: '#252525', // Fondo del input (gris oscuro)
-        color: '#FFFFFF',          // Color del texto (blanco)
+        backgroundColor: '#252525', 
+        color: '#FFFFFF',          
         fontSize: 18,
         paddingHorizontal: 20,
         paddingVertical: 15,
-        borderRadius: 10,          // Bordes redondeados
+        borderRadius: 10,          
         borderWidth: 1,
-        borderColor: '#444444',    // Borde sutil
+        borderColor: '#444444',   
     },
-    // Contenedor para el botón de jugar
+
     buttonContainer: {
-        marginTop: 20, // Espacio arriba del botón
-        backgroundColor: '#007AFF', // Fondo azul (estilo Apple) para el botón
+        marginTop: 20,
+        backgroundColor: '#007AFF', 
         borderRadius: 10,
-        overflow: 'hidden', // Para que el color de fondo respete el borderRadius en Android
+        overflow: 'hidden',
     },
 });

@@ -18,20 +18,25 @@ export default function SlidingCard() {
   const [isFlipped, setIsFlipped] = useState(false);
   const flipAnim = useRef(new Animated.Value(0)).current;
 
-  // Interpolaciones del flip
   const frontInterpolate = flipAnim.interpolate({
     inputRange: [0, 180],
     outputRange: ['0deg', '180deg'],
   });
+
   const backInterpolate = flipAnim.interpolate({
     inputRange: [0, 180],
     outputRange: ['180deg', '360deg'],
   });
-  
+
   const jugadorActual = players.find(p => p.id === currentPlayer);
-  const nombreDelJugador = jugadorActual?.name ?? `Jugador ${currentPlayer}`;
+  const nombreJugador = jugadorActual?.name ?? `Jugador ${currentPlayer}`;
+
   const isImpostor = impostorIDs.includes(currentPlayer);
-  const rolText = isImpostor ? "¡Eres el Impostor!" : `${crewmateKeyword}`;
+
+  // ⬇️ AHORA: El dorso NO tiene el nombre
+  const rolText = isImpostor
+    ? `¡Eres el Impostor!`
+    : `${crewmateKeyword}`;
 
   const flipCard = () => {
     Animated.timing(flipAnim, {
@@ -41,7 +46,6 @@ export default function SlidingCard() {
     }).start(() => setIsFlipped(!isFlipped));
   };
 
-  // Reinicia la carta al pasar de jugador
   useEffect(() => {
     Animated.timing(flipAnim, {
       toValue: 0,
@@ -52,16 +56,16 @@ export default function SlidingCard() {
 
   return (
     <LinearGradient
-      colors={['#312b2bff', '#750c0cff', '#5a0a0aff']}
+      colors={['#0f0f0f', '#1a1a1a']}
       start={{ x: 0.2, y: 0 }}
       end={{ x: 0.8, y: 1 }}
       style={styles.gradient}
     >
       <View style={styles.container}>
 
-        {/* TARJETA INTERACTIVA */}
-        <Pressable onPress={flipCard}>
-          {/* LADO FRONTAL */}
+        <Pressable onPress={flipCard} style={styles.cardWrapper}>
+
+          {/* FRENTE */}
           <Animated.View
             style={[
               styles.card,
@@ -69,17 +73,21 @@ export default function SlidingCard() {
             ]}
           >
             <ImageBackground
-              source={require('../assets/images.png')} 
+              source={require('../assets/images.png')}
               style={styles.cardBackground}
               imageStyle={{ opacity: 0.15 }}
             >
-              <Text style={styles.cardText}>
-                {nombreDelJugador.toUpperCase()} ({currentPlayer}/{totalJugadores})
+              {/* NOMBRE DEL JUGADOR */}
+              <Text style={styles.cardText}>{nombreJugador}</Text>
+
+              {/* POSICIÓN 1/5 */}
+              <Text style={styles.subInfo}>
+                {`${currentPlayer}/${totalJugadores}`}
               </Text>
             </ImageBackground>
           </Animated.View>
 
-          {/* LADO POSTERIOR */}
+          {/* DORSO */}
           <Animated.View
             style={[
               styles.card,
@@ -92,18 +100,17 @@ export default function SlidingCard() {
               style={styles.cardBackground}
               imageStyle={{ opacity: 0.1 }}
             >
+              {/* SOLO ROL O PALABRA */}
               <Text style={styles.cardText}>{rolText}</Text>
             </ImageBackground>
           </Animated.View>
         </Pressable>
 
-        {/* BOTÓN SIGUIENTE */}
         <Pressable style={styles.button} onPress={flipCard}>
-          <Text style={styles.buttonText}>voltear</Text>
+          <Text style={styles.buttonText}>VER</Text>
         </Pressable>
 
-        {/* BOTÓN SIGUIENTE */}
-        <Pressable style={styles.button0} onPress={handleNextPlayer}>
+        <Pressable style={styles.button} onPress={handleNextPlayer}>
           <Text style={styles.buttonText}>SIGUIENTE</Text>
         </Pressable>
 
@@ -113,9 +120,7 @@ export default function SlidingCard() {
 }
 
 const styles = StyleSheet.create({
-  gradient: {
-    flex: 1,
-  },
+  gradient: { flex: 1 },
 
   container: {
     flex: 1,
@@ -123,18 +128,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
+  cardWrapper: {
+    width: 350,
+    height: 540,
+    marginBottom: 5,
+    marginTop: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
   card: {
     width: 350,
     height: 540,
-    backgroundColor: '#555',
+    backgroundColor: '#333',
     borderRadius: 20,
-    borderWidth: 3,
+    borderWidth: 4,
     borderColor: '#ffffff',
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'absolute',
     backfaceVisibility: 'hidden',
-    left: -175,
+    position: 'absolute',
+
   },
 
   cardBack: {
@@ -149,27 +163,30 @@ const styles = StyleSheet.create({
   },
 
   cardText: {
-    fontSize: 26,
+    fontSize: 32,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#ffffff',
     textAlign: 'center',
-    textShadowColor: 'rgba(0,0,0,0.8)',
-    textShadowOffset: { width: 0, height: 2 },
-    textShadowRadius: 6,
+    textShadowColor: 'rgba(0,0,0,0.9)',
+    textShadowOffset: { width: 0, height: 3 },
+    textShadowRadius: 8,
+  },
+
+  subInfo: {
+    marginTop: 10,
+    fontWeight: 'bold',
+    fontSize: 35,
+    color: '#ffffff',
   },
 
   button: {
-    marginTop: 550,
     padding: 15,
-  },
-  button0: {
-    marginTop: 5,
-    padding: 15,
+    marginBottom: -17,
   },
 
   buttonText: {
-    padding: 10,
-    width: 150,
+    padding: 12,
+    width: 200,
     textAlign: 'center',
     fontSize: 16,
     borderRadius: 10,

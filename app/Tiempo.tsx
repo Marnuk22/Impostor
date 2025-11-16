@@ -85,7 +85,7 @@ export default function FinDelJuegoScreen() {
 
         <View style={{ flex: 0.4 }} />
 
-        <Pressable onPress={() => router.push('/Menu')} style={styles.botonContainer}>
+        <Pressable onPress={() => router.push('/MenuImpostor')} style={styles.botonContainer}>
             <Text style={styles.botonTexto}>VOLVER A JUGAR</Text>
         </Pressable>
         <View style={{ height: 20 }} />

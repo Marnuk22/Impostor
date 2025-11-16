@@ -865,7 +865,7 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
                 if (existingPlayer) {
                     newPlayers.push(existingPlayer);
                 } else {
-                    newPlayers.push({ id: i, name: `Jugador ${i}` });
+                    newPlayers.push({ id: i, name: `` });
                 }
             }
             return newPlayers;
@@ -907,10 +907,10 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
 
     const handleGoTo = () => {
       if (JuegoElegido === "impostor"){
-        router.push("/Menu");
+        router.push("/MenuImpostor");
       }
       if (JuegoElegido === "masomenos"){
-        router.push("/Menu2");
+        router.push("/MenuDeEleccion");
       }
     };
 

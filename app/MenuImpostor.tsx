@@ -1,3 +1,4 @@
+// app/index.tsx
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -55,67 +56,20 @@ export default function App() {
     ).start();
   }, []);
 
-  const handleIncrementJugadoresUI = () => {
-    const succes = handleIncrementJugadores();
-    if (succes){
-    Animated.sequence([
-      Animated.timing(scaleJugadores, { toValue: 1.2, duration: 100, useNativeDriver: true }),
-      Animated.timing(scaleJugadores, { toValue: 1, duration: 100, useNativeDriver: true }),
-    ]).start();
-    }
-  };
-
-  const handleDecrementJugadoresUI = () => {
-    const succes = handleDecrementJugadores();
-    if (succes) {
-      Animated.sequence([
-      Animated.timing(scaleJugadores, { toValue: 0.8, duration: 100, useNativeDriver: true }),
-      Animated.timing(scaleJugadores, { toValue: 1, duration: 100, useNativeDriver: true }),
-      ]).start();
-    }
-  };
-
-  const handleIncrementImpostoresUI = () => {
-    const succes = handleIncrementImpostores();
-    if(succes){
-      Animated.sequence([
-        Animated.timing(scaleImpostores, { toValue: 1.2, duration: 100, useNativeDriver: true }),
-        Animated.timing(scaleImpostores, { toValue: 1, duration: 100, useNativeDriver: true }),
-      ]).start();
-    }
-  };
-
-  const handleDecrementImpostoresUI = () => {
-    const succes = handleDecrementImpostores();
-    if (succes){
-      Animated.sequence([
-        Animated.timing(scaleImpostores, { toValue: 0.8, duration: 100, useNativeDriver: true }),
-        Animated.timing(scaleImpostores, { toValue: 1, duration: 100, useNativeDriver: true }),
-      ]).start();
-    }
-  };
-
-  const handleRenombre = () => {
-    router.push("/Nombramiento")
+  const handleRenombre = () => { 
+      router.push("/Nombramiento") 
   }
 
   return (
     <LinearGradient colors={['#413f3fff', '#353434ff', '#000000']} style={{ flex: 1 }}>
-      <ScrollView
-        contentContainerStyle={styles.scrollContainer}
-        keyboardShouldPersistTaps="handled"
-      >
+      <ScrollView contentContainerStyle={styles.scrollContainer} keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
-          {/* ANIMACIÓN DEL TITULO */}
-          <Animated.View
-            style={[
-              styles.cajaTitulo,
-              {
-                opacity: fadeTitulo,
-                transform: [{ translateY: translateTitulo }],
-              },
-            ]}
-          >
+
+          {/* TITULO */}
+          <Animated.View style={[
+            styles.cajaTitulo,
+            { opacity: fadeTitulo, transform: [{ translateY: translateTitulo }] }
+          ]}>
             <Animated.Text
               style={[
                 styles.titulo,
@@ -131,69 +85,74 @@ export default function App() {
                   }),
                 },
               ]}
-            >IMPOSTOR</Animated.Text>
-            
+            >
+              IMPOSTOR
+            </Animated.Text>
           </Animated.View>
 
           {/* JUGADORES */}
-            <Text style={styles.etiqueta}>JUGADORES</Text>
+          <Text style={styles.etiqueta}>JUGADORES</Text>
 
-            <View style={styles.botonera}>
-              <Pressable onPress={handleDecrementJugadoresUI} style={styles.botonPress}>
-                <Text style={styles.boton}>-</Text>
-              </Pressable>
+          <View style={styles.botonera}>
+            <Pressable onPress={handleDecrementJugadores} style={styles.botonPress}>
+              <Text style={styles.boton}>-</Text>
+            </Pressable>
 
-              <Animated.Text style={[styles.numero, { transform: [{ scale: scaleJugadores }] }]}>
-                {totalJugadores}
-              </Animated.Text>
+            <Animated.Text style={[styles.numero, { transform: [{ scale: scaleJugadores }] }]}>
+              {totalJugadores}
+            </Animated.Text>
 
-              <Pressable onPress={handleIncrementJugadoresUI} style={styles.botonPress}>
-                <Text style={styles.boton}>+</Text>
-              </Pressable>
-            </View>
+            <Pressable onPress={handleIncrementJugadores} style={styles.botonPress}>
+              <Text style={styles.boton}>+</Text>
+            </Pressable>
+          </View>
 
           {/* IMPOSTORES */}
-            <Text style={styles.etiqueta}>IMPOSTORES</Text>
+          <Text style={styles.etiqueta}>IMPOSTORES</Text>
 
-            <View style={styles.botonera}>
-              <Pressable onPress={handleDecrementImpostoresUI} style={styles.botonPress}>
-                <Text style={styles.boton}>-</Text>
-              </Pressable>
+          <View style={styles.botonera}>
+            <Pressable onPress={handleDecrementImpostores} style={styles.botonPress}>
+              <Text style={styles.boton}>-</Text>
+            </Pressable>
 
-              <Animated.Text style={[styles.numero, { transform: [{ scale: scaleImpostores }] }]}>
-                {totalImpostores}
-              </Animated.Text>
+            <Animated.Text style={[styles.numero, { transform: [{ scale: scaleImpostores }] }]}>
+              {totalImpostores}
+            </Animated.Text>
 
-              <Pressable onPress={handleIncrementImpostoresUI} style={styles.botonPress}>
-                <Text style={styles.boton}>+</Text>
-              </Pressable>
-            </View>
+            <Pressable onPress={handleIncrementImpostores} style={styles.botonPress}>
+              <Text style={styles.boton}>+</Text>
+            </Pressable>
+          </View>
 
           {/* INFO */}
           <Text style={styles.info}>
             JUGARAN {totalJugadores} PERSONAS CON {totalImpostores} IMPOSTORES.
           </Text>
 
-          {/* BOTÓN JUGAR */}
+          {/* --- BOTONES FINALES --- */}
+
           <Animated.View style={{ transform: [{ scale: pulseJugar }] }}>
             <Pressable onPress={handleStartGame} style={styles.botonJugar}>
               <Text style={styles.textoJugar}>JUGAR</Text>
             </Pressable>
           </Animated.View>
 
-          {/* BOTÓN JUGAR */}
-          <Animated.View style={{ transform: [{ scale: pulseJugar }] }}>
-            <Pressable onPress={handleRenombre} style={styles.botonJugar}>
-              <Text style={styles.textoJugar}>NOMBRES</Text>
-            </Pressable>
-          </Animated.View>
+          <View style={styles.row}>
 
-          {/* BOTÓN JUGAR */}
-          <Animated.View style={{ transform: [{ scale: pulseJugar }] }}>
-            <Pressable onPress={handleRenombre} style={styles.botonJugar}>
-              <Text style={styles.textoJugar}>CATERGORIAS</Text>
-            </Pressable>
-          </Animated.View>
+            <Animated.View style={{ transform: [{ scale: pulseJugar }] }}>
+              <Pressable onPress={handleRenombre} style={styles.botonChico}>
+                <Text style={styles.textoChico}>NOMBRES</Text>
+              </Pressable>
+            </Animated.View>
+
+            <Animated.View style={{ transform: [{ scale: pulseJugar }] }}>
+              <Pressable onPress={handleRenombre} style={styles.botonChico}>
+                <Text style={styles.textoChico}>CATEGORÍAS</Text>
+              </Pressable>
+            </Animated.View>
+
+          </View>
+
 
           <StatusBar style="auto" />
         </View>
@@ -203,7 +162,6 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-
   scrollContainer: {
     flexGrow: 1,
     justifyContent: 'center',
@@ -226,10 +184,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderColor:'#ffffff',
     borderWidth: 3,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.4,
-    shadowRadius: 5,
     elevation: 8,
     width: '90%',
   },
@@ -306,9 +260,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     borderWidth: 2,
     borderColor: '#FFFFFF',
-    shadowRadius: 8,
-    elevation: 6,
-    marginBottom: 50,
+    marginBottom: 40,
   },
 
   textoJugar: {
@@ -316,6 +268,34 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+
+  row: {
+    flexDirection: "row",
+    gap: 20,
+    marginBottom: -10,
+  },
+
+  botonSmall: {
+    paddingHorizontal: 30,
+  },
+
+  botonChico: {
+    backgroundColor: '#000000',
+    paddingVertical: 15,
+    paddingHorizontal: 30,
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: '#FFFFFF',
+    marginBottom: 20,
+  },
+
+  textoChico: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
     letterSpacing: 1,
   },
+
 });
