@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Impostor2",
-    "slug": "Impostor2",
-    "version": "1.0.0",
+    "name": "Impostor",
+    "slug": "Impostor",
+    "version": "1.2.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "scheme": "impostor2",
