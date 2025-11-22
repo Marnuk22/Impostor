@@ -3,7 +3,7 @@ import { router } from 'expo-router';
 import React from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useGame } from './GameContext';
-
+//Muestra un listado de los jugadores y al presionar en cada uno revela su rol
 export default function FinDelJuegoTabla() {
     const { 
         players,

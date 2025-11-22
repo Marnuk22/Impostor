@@ -1,7 +1,7 @@
 // app/GameContext.tsx
 import { useRouter } from 'expo-router';
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
-
+//Mannejo de variables y funciones
 export const MIN_JUGADORES = 4; 
 export const MAX_JUGADORES = 12; 
 export const MIN_IMPOSTORES = 1;
@@ -874,8 +874,6 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
 
     const resetGame = () => {
         // Resetea todos los estados a sus valores iniciales
-        setTotalJugadores(MIN_JUGADORES);
-        setTotalImpostores(MIN_IMPOSTORES);
         setCurrentPlayer(1);
         setImpostorIDs([]);
         setCrewmateKeyword(KEYWORDS[0]);

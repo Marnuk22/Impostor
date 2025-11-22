@@ -3,7 +3,7 @@ import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View, Animated } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Svg, { Circle } from 'react-native-svg';
-
+//actualmente inutil
 const INITIAL_TIME_SECONDS = 5 * 60;
 const RADIUS = 160;
 const STROKE_WIDTH = 30;

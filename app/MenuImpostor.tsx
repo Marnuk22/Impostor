@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useRef } from 'react';
 import { Animated, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useGame } from './GameContext';
-
+//Menu de inicio para el Impostor
 export default function App() {
   const { 
     totalJugadores, 

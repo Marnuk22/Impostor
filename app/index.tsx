@@ -4,7 +4,7 @@ import { Link } from 'expo-router';
 import React from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
 import { useGame } from './GameContext';
-
+// Pantalla de inicio Proyrctamos tener mas de un solo juego
 export default function PaginaDeInicio() {
     const { 
         setJuegoElegido,

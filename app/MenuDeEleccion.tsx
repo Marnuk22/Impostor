@@ -2,7 +2,7 @@ import { router } from "expo-router";
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useGame } from "./GameContext";
-
+//Menu de inicio para el Segundo Juego (aun en proceso)
 export default function App() {
   const {
     totalJugadores,

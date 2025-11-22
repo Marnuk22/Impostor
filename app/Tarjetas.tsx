@@ -2,7 +2,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useGame } from './GameContext';
-
+//Muestra el Rol de cada jugador individualmente (Solo para Impostor)
 const FLIP_DURATION = 500;
 
 export default function SlidingCard() {
