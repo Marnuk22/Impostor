@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Impostor",
-    "slug": "Impostor",
+    "slug": "Impostor2",
     "version": "1.2.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,7 +14,11 @@
     "android": {
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.Marnuk22.Impostor"
+      "package": "com.Marnuk22.Impostor",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#27160C"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png",
