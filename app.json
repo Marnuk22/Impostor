@@ -22,7 +22,10 @@
     },
     "web": {
       "favicon": "./assets/icon.png",
-      "baseUrl": "/Impostor/"
+      "baseUrl": "/Impostor/",
+      "bundler": "metro",
+      "output": "static",
+      "injectHTML": "<style>html,body,#root{height:100%;margin:0;padding:0;}</style>"
     },
     "plugins": [
       "expo-router",
