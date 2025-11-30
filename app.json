@@ -21,21 +21,19 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png",
-      "baseUrl": "/Impostor/"
+      "favicon": "./assets/icon.png",
+      "baseUrl": "/Impostor/",
+      "bundler": "metro",
+      "output": "static",
+      "injectHTML": "<style>html,body,#root{height:100%;margin:0;padding:0;}</style>"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff",
-          "dark": {
-            "backgroundColor": "#000000"
-          }
+          "backgroundColor": "#000000",
+          "resizeMode": "contain"
         }
       ]
     ],

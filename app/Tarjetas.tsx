@@ -1,8 +1,8 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect, useRef, useState } from 'react';
-import { Animated, ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
+import {Animated,ImageBackground,Pressable,StyleSheet,Text,View,ScrollView,Platform} from 'react-native';
 import { useGame } from './GameContext';
-//Muestra el Rol de cada jugador individualmente (Solo para Impostor)
+
 const FLIP_DURATION = 500;
 
 export default function SlidingCard() {
@@ -33,10 +33,7 @@ export default function SlidingCard() {
 
   const isImpostor = impostorIDs.includes(currentPlayer);
 
-  // ⬇️ AHORA: El dorso NO tiene el nombre
-  const rolText = isImpostor
-    ? `¡Eres el Impostor!`
-    : `${crewmateKeyword}`;
+  const rolText = isImpostor ? `¡Eres el Impostor!` : `${crewmateKeyword}`;
 
   const flipCard = () => {
     Animated.timing(flipAnim, {
@@ -54,6 +51,12 @@ export default function SlidingCard() {
     }).start(() => setIsFlipped(false));
   }, [currentPlayer]);
 
+  const Container = Platform.OS === "web" ? ScrollView : View;
+  const containerProps =
+    Platform.OS === "web"
+      ? { contentContainerStyle: styles.container }
+      : { style: styles.container };
+
   return (
     <LinearGradient
       colors={['#0f0f0f', '#1a1a1a']}
@@ -61,7 +64,7 @@ export default function SlidingCard() {
       end={{ x: 0.8, y: 1 }}
       style={styles.gradient}
     >
-      <View style={styles.container}>
+      <Container {...containerProps}>
 
         <Pressable onPress={flipCard} style={styles.cardWrapper}>
 
@@ -77,10 +80,10 @@ export default function SlidingCard() {
               style={styles.cardBackground}
               imageStyle={{ opacity: 0.15 }}
             >
-              {/* NOMBRE DEL JUGADOR */}
-              <Text style={styles.cardText}>{jugadorActual?.name || `jugador ${jugadorActual?.id}`} </Text>
+              <Text style={styles.cardText}>
+                {jugadorActual?.name || `Jugador ${jugadorActual?.id}`}
+              </Text>
 
-              {/* POSICIÓN 1/5 */}
               <Text style={styles.subInfo}>
                 {`${currentPlayer}/${totalJugadores}`}
               </Text>
@@ -100,7 +103,6 @@ export default function SlidingCard() {
               style={styles.cardBackground}
               imageStyle={{ opacity: 0.1 }}
             >
-              {/* SOLO ROL O PALABRA */}
               <Text style={styles.cardText}>{rolText}</Text>
             </ImageBackground>
           </Animated.View>
@@ -114,7 +116,7 @@ export default function SlidingCard() {
           <Text style={styles.buttonText}>SIGUIENTE</Text>
         </Pressable>
 
-      </View>
+      </Container>
     </LinearGradient>
   );
 }
@@ -123,9 +125,10 @@ const styles = StyleSheet.create({
   gradient: { flex: 1 },
 
   container: {
-    flex: 1,
+    flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingVertical: 20,
   },
 
   cardWrapper: {
@@ -148,7 +151,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backfaceVisibility: 'hidden',
     position: 'absolute',
-
   },
 
   cardBack: {
