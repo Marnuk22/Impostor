@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useRef } from 'react';
 import { Animated, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useGame } from './GameContext';
+
 //Menu de inicio para el Impostor
 export default function App() {
   const { 
@@ -58,6 +59,10 @@ export default function App() {
 
   const handleRenombre = () => { 
       router.push("/Nombramiento") 
+  }
+  
+  const handleCategorias = () => { 
+      router.push("/Categorias") 
   }
 
   return (
@@ -146,7 +151,7 @@ export default function App() {
             </Animated.View>
 
             <Animated.View style={{ transform: [{ scale: pulseJugar }] }}>
-              <Pressable onPress={handleRenombre} style={styles.botonChico}>
+              <Pressable onPress={handleCategorias} style={styles.botonChico}>
                 <Text style={styles.textoChico}>CATEGORÍAS</Text>
               </Pressable>
             </Animated.View>
