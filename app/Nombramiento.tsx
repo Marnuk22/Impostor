@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useGame } from './GameContext';
-//Estructura para nombrar a cada uno de los jugadores (sin importar el juego)
+import { router } from "expo-router";
+
 export default function NombramientoScreen() {
     
     const { 
@@ -29,12 +30,23 @@ export default function NombramientoScreen() {
                 </View>
             ))}
 
+            {/* BOTÓN REPARTIR CARTAS */}
             <View style={styles.buttonContainer}>
                 <Button
                     title="Repartir Cartas"
                     onPress={handleStartGame} 
                 />
             </View>
+
+            {/* BOTÓN VOLVER AL MENÚ */}
+            <View style={[styles.buttonContainer, { marginTop: 10 }]}>
+                <Button
+                    title="Volver al Menú"
+                    color="#ff0000ff"
+                    onPress={() => router.push("/MenuImpostor")}
+                />
+            </View>
+
         </ScrollView>
     );
 }
@@ -66,7 +78,9 @@ const styles = StyleSheet.create({
 
     input: {
         backgroundColor: '#252525', 
-        color: '#FFFFFF',          
+        color: '#FFFFFF',
+        width: 360,
+        marginLeft: 13,          
         fontSize: 18,
         paddingHorizontal: 20,
         paddingVertical: 15,
@@ -77,8 +91,9 @@ const styles = StyleSheet.create({
 
     buttonContainer: {
         marginTop: 20,
-        backgroundColor: '#007AFF', 
+        backgroundColor: '#ff0000ff', 
         borderRadius: 10,
         overflow: 'hidden',
+        marginHorizontal: 20
     },
 });

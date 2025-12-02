@@ -1,13 +1,12 @@
-
-// --- Aqui se define la base de datos de categorías y sus ítems ---
 export interface CategoryItem {
     id: string;
     nombre: string;
-    items: string[]; // El subconjunto de strings que representa la categoría
+    items: string[];
+    imagen: any;
 }
 
 export const CATEGORIAS_DISPONIBLES: CategoryItem[] = [
-    { id: "1", nombre: "Personas Famosas", items: [
+    { id: "1", nombre: "Personas Famosas",imagen: require("../assets/PersonasFamosas.png"), items: [
         "Messi",
         "Maradona",
         "Ricardo Fort",
@@ -188,7 +187,7 @@ export const CATEGORIAS_DISPONIBLES: CategoryItem[] = [
         "Julio César",
         "Mahatma Gandhi"
     ]},
-    { id: "2", nombre: "Personajes y Series", items: [
+    { id: "2", nombre: "Series Y Peliculas",imagen: require("../assets/SeriesYPeliculas.png"), items: [
         "John Wick",
         "Neo",
         "Trinity",
@@ -340,7 +339,7 @@ export const CATEGORIAS_DISPONIBLES: CategoryItem[] = [
         "Migue Granados",
         "Gargamel"
     ]},
-    { id: "3", nombre: "Super Heroes", items: [
+    { id: "3", nombre: "Super Heroes",imagen: require("../assets/SuperHeroes.png"), items: [
         "Joker",
         "Robin",
         "Bane",
@@ -405,7 +404,7 @@ export const CATEGORIAS_DISPONIBLES: CategoryItem[] = [
         "X-Men",
         "Spider-Man: De Regreso a Casa"
     ]},
-    {id: "4", nombre: "Series animadas", items: [
+    {id: "4", nombre: "Series animadas",imagen: require("../assets/SeriesAnimadas.png"), items: [
         "Alf",
 "Homer",
 "Marge",
@@ -583,7 +582,7 @@ export const CATEGORIAS_DISPONIBLES: CategoryItem[] = [
 "Profesor Jirafales",
         "Doña Florinda"
     ]},
-    { id: "5", nombre: "Anime", items: [
+    { id: "5", nombre: "Anime",imagen: require("../assets/Anime.png"), items: [
         "Light Yagami (Death Note)",
         "L (Death Note)",
         "Misa Amane (Death Note)",
@@ -637,7 +636,7 @@ export const CATEGORIAS_DISPONIBLES: CategoryItem[] = [
         "Jiraiya",
         "Ichigo"
     ]},
-    {id: "6", nombre: "Videojuegos", items: [
+    {id: "6", nombre: "Videojuegos",imagen: require("../assets/VideoJuegos.png"), items: [
         "Hollow Knight",
         "Celeste",
         "Stardew Valley",
