@@ -76,9 +76,9 @@ export default function SlidingCard() {
             ]}
           >
             <ImageBackground
-              source={require('../assets/images.png')}
+              source={require('../assets/icon.png')}
               style={styles.cardBackground}
-              imageStyle={{ opacity: 0.15 }}
+              imageStyle={{ opacity: 0.8 }}
             >
               <Text style={styles.cardText}>
                 {jugadorActual?.name || `Jugador ${jugadorActual?.id}`}
@@ -141,12 +141,12 @@ const styles = StyleSheet.create({
   },
 
   card: {
-    width: 350,
-    height: 540,
+    width: '100%',
+    height:'100%',
     backgroundColor: '#333',
-    borderRadius: 20,
+    borderRadius: 10,
     borderWidth: 4,
-    borderColor: '#ffffff',
+    borderColor: '#ffffffff',
     justifyContent: 'center',
     alignItems: 'center',
     backfaceVisibility: 'hidden',
@@ -158,8 +158,8 @@ const styles = StyleSheet.create({
   },
 
   cardBackground: {
-    width: '100%',
-    height: '100%',
+    width: 340,
+    height: 527,
     justifyContent: 'center',
     alignItems: 'center',
   },

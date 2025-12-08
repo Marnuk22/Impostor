@@ -1,9 +1,10 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import React from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View, ImageBackground } from 'react-native';
 import { useGame } from './GameContext';
-//Muestra un listado de los jugadores y al presionar en cada uno revela su rol
+
+// Muestra un listado de los jugadores y al presionar en cada uno revela su rol
 export default function FinDelJuegoTabla() {
     const { 
         players,
@@ -41,13 +42,30 @@ export default function FinDelJuegoTabla() {
                                     isEliminated && (esImpostor ? styles.playerImpostor : styles.playerCrewmate)
                                 ]}
                             >
-                                <Text style={styles.playerName}> {player.name ? player.name : `jugador ${player.id}`}</Text>
+                                <ImageBackground
+                                    source={require('../assets/icon.png')}
+                                    style={styles.imageBackground}
+                                    imageStyle={{ borderRadius: 10 }}
+                                >
+                                    {/* Overlay solo cuando está eliminado */}
+                                    {isEliminated && (
+                                        <View style={[
+                                            styles.overlay,
+                                            esImpostor ? styles.overlayImpostor : styles.overlayCrewmate
+                                        ]} />
+                                    )}
 
-                                {isEliminated && (
-                                    <Text style={styles.playerRole}>
-                                        {esImpostor ? "IMPOSTOR" : "INOCENTE"}
+                                    <Text style={styles.playerName}>
+                                        {player.name ? player.name : `jugador ${player.id}`}
                                     </Text>
-                                )}
+
+                                    {isEliminated && (
+                                        <Text style={styles.playerRole}>
+                                            {esImpostor ? "IMPOSTOR" : "INOCENTE"}
+                                        </Text>
+                                    )}
+                                </ImageBackground>
+
                             </Pressable>
                         );
                     })}
@@ -92,24 +110,41 @@ const styles = StyleSheet.create({
     playerBox: { 
         width: 150,
         height: 120,
-        backgroundColor: '#000000',
         borderRadius: 10,
         borderWidth: 3,
         borderColor: '#FFFFFF',
+        overflow: 'hidden',
+        margin: 5,
+        backgroundColor: '#000000',
+    },
+
+    imageBackground: {
+        width: "100%",
+        height: "100%",
         justifyContent: "center",
         alignItems: "center",
-        padding: 10,
-        margin: 5,
+    },
+
+    overlay: {
+        position: 'absolute',
+        top: 0, left: 0, right: 0, bottom: 0,
+        borderRadius: 10,
+    },
+
+    overlayImpostor: {
+        backgroundColor: 'rgba(255, 0, 0, 0.45)',
+    },
+
+    overlayCrewmate: {
+        backgroundColor: 'rgba(0, 255, 100, 0.45)',
     },
 
     playerImpostor: {
-        backgroundColor: '#d80707ff',
-        opacity: 0.90,
+        borderColor: '#ffffff',
     },
 
     playerCrewmate: {
-        backgroundColor: '#07701cff',
-        opacity: 0.90,
+        borderColor: '#ffffff',
     },
 
     playerName: { 
@@ -117,14 +152,20 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "bold",
         textAlign: "center",
+        textShadowColor: '#000',
+        textShadowRadius: 3,
+        textShadowOffset: { width: 2.5, height: 3 },
     },
 
     playerRole: {
-        color: '#000000',
+        color: '#ffffff',
         fontWeight: 'bold',
         fontSize: 20,
         textAlign: 'center',
         marginTop: 6,
+        textShadowColor: '#000000',
+        textShadowRadius: 3,
+        textShadowOffset: { width: 2.5, height: 3 },
     },
 
     restartButtonContainer: {
