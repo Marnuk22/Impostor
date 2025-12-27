@@ -6,8 +6,8 @@ import { CATEGORIAS_DISPONIBLES, CategoryItem } from './DataBaseCategorias';
 //Importacones-----------------------------------------------------------------------------------------------------------------------
 
 //Constantes Globales----------------------------------------------------------------------------------------------------------------
-export const MIN_JUGADORES = 4; 
-export const MAX_JUGADORES = 12; 
+export const MIN_JUGADORES = 3; 
+export const MAX_JUGADORES = 15; 
 export const MIN_IMPOSTORES = 1;
 
 export interface Player {
