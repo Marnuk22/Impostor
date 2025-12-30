@@ -2,7 +2,7 @@
     import { View, Text, TouchableOpacity, StyleSheet, Button } from 'react-native';
     import { CATEGORIAS_DISPONIBLES, CategoryItem } from './DataBaseCategorias';
     import { Background } from '@react-navigation/elements';
-    import { useGame } from './GameContext';
+    import { useGame } from '../GameContext';
     import { router } from 'expo-router';
 
     // Pantalla de selección de categorías
@@ -20,7 +20,7 @@
                 alert('¡Debes seleccionar al menos una categoría!');
                 return;
             }
-            router.back()
+            router.push("/Impostor/MenuImpostor");
         };
 
         const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>([]);

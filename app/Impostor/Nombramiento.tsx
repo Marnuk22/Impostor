@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
-import { useGame } from './GameContext';
+import { useGame } from '../GameContext';
 //Estructura para nombrar a cada uno de los jugadores (sin importar el juego)
 export default function NombramientoScreen() {
     

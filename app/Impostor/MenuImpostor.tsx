@@ -4,7 +4,7 @@ import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useRef } from 'react';
 import { Animated, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { useGame } from './GameContext';
+import { useGame } from '../GameContext';
 
 //Menu de inicio para el Impostor
 export default function App() {
@@ -58,11 +58,11 @@ export default function App() {
   }, []);
 
   const handleRenombre = () => { 
-      router.push("/Nombramiento") 
+      router.push("/Impostor/Nombramiento") 
   }
   
   const handleCategorias = () => { 
-      router.push("/Categorias") 
+      router.push("./Categorias") 
   }
 
   return (

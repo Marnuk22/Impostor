@@ -1,7 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect, useRef, useState } from 'react';
 import {Animated,ImageBackground,Pressable,StyleSheet,Text,View,ScrollView,Platform} from 'react-native';
-import { useGame } from './GameContext';
+import { useGame } from '.././GameContext';
 
 const FLIP_DURATION = 500;
 
@@ -76,7 +76,7 @@ export default function SlidingCard() {
             ]}
           >
             <ImageBackground
-              source={require('../assets/images.png')}
+              source={require('../../assets/images.png')}
               style={styles.cardBackground}
               imageStyle={{ opacity: 0.15 }}
             >
@@ -99,7 +99,7 @@ export default function SlidingCard() {
             ]}
           >
             <ImageBackground
-              source={require('../assets/images.png')}
+              source={require('../../assets/images.png')}
               style={styles.cardBackground}
               imageStyle={{ opacity: 0.1 }}
             >

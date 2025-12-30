@@ -2,7 +2,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import React from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { useGame } from './GameContext';
+import { useGame } from '../GameContext';
 //Muestra un listado de los jugadores y al presionar en cada uno revela su rol
 export default function FinDelJuegoTabla() {
     const { 
@@ -15,7 +15,7 @@ export default function FinDelJuegoTabla() {
 
     const handleReinicio = () => {
         resetGame();
-        router.push('/MenuImpostor');
+        router.push('/Impostor/MenuImpostor');
     };
 
     return (
