@@ -20,7 +20,7 @@ export default function PaginaDeInicio() {
 
             <Text style={styles.tituloPrincipal}>ELEGIR UNO</Text>
 
-            {/* BOTÓN JUEGO IMPOSTOR */}<Link href="/Impostor/MenuImpostor" asChild>
+            {/* BOTÓN JUEGO IMPOSTOR */}<Link href="/MenuImpostor" asChild>
                 <Pressable 
                     onPress={() => {
                         // El onPress AHORA SOLO se encarga de la lógica

@@ -9,6 +9,8 @@ export default function App() {
     totalImpostores,
     handleStartGame,
     handleDecrementJugadores,
+    handleDecrementImpostores,
+    handleIncrementImpostores,
     handleIncrementJugadores,
   } = useGame();
 

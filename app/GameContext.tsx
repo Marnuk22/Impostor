@@ -6,13 +6,6 @@ import { CATEGORIAS_DISPONIBLES, CategoryItem } from './Impostor/DataBaseCategor
 //Importacones-----------------------------------------------------------------------------------------------------------------------
 
 //Constantes Globales----------------------------------------------------------------------------------------------------------------
-
-const LIMITES_POR_JUEGO = {
-  impostor: { minPlayers: 4, maxPlayers: 12 },
-  masomenos: { minPlayers: 3, maxPlayers: 10 },
-}
-
-
 export const MIN_JUGADORES = 3; 
 export const MAX_JUGADORES = 15; 
 export const MIN_IMPOSTORES = 1;
@@ -21,27 +14,7 @@ export interface Player {
   id: number;
   name: string;
 }
-
-export class Jugador{
-  id: number;
-  name: string;
-  constructor(id: number, name: string){
-    this.id = id;
-    this.name = name;
-  }
-}
-
-export class JugadorMasOMenos extends Jugador {
-  puntuacion: number;
-  valorAsignado: number;
-  constructor(id: number, name: string, puntuacion: number, valorAsignado: number){
-    super(id, name);
-    this.puntuacion = puntuacion;
-    this.valorAsignado = valorAsignado;
-  }
-}
-
-
+// Lista de palabras/roles para los tripulantes
 
 // 1. Definir la forma de los datos. Declarar las Variables y funciones que se van a compartir
 interface GameContextType {
@@ -64,7 +37,7 @@ interface GameContextType {
     handleIncrementImpostores: () => boolean; //FUUNCIONES DE MANEJO DE CANTIDAD DE JUGADORES (SOLO JUEGO IMPOSTOR)
     handleDecrementImpostores: () => boolean; //FUUNCIONES DE MANEJO DE CANTIDAD DE JUGADORES (SOLO JUEGO IMPOSTOR)
 
-    players: Jugador[]; //Lista de jugadores con sus nombres
+    players: Player[]; //Lista de jugadores con sus nombres
     renombraPlayer: (id: number, nombre: string) => void; //Función para renombrar jugadores del arreglo players
     eliminados: number[]; //Lista de jugadores eliminados (JUEGO IMPOSTOR)
     eliminar: (playerId: number) => void; //Función para agregar un jugador a la lista de eliminados (JUEGO IMPOSTOR)
@@ -81,10 +54,7 @@ interface GameContextType {
     faseJuego: string;              //Fase actual del juego (JUEGO IMPOSTOR)
     handleCategoriaClick: (nombreCategoria: string) => void; //Función para manejar la selección de categorías (JUEGO IMPOSTOR)
     comenzarJuego: () => void;      //Función para comenzar el juego después de la selección de categorías (JUEGO IMPOSTOR. INNECESARIO PARA OTROS MODOS)
-
-    //---------------------------------------------------------Variables y funciones para Mas o Menos 
-    RondaActual: number;
-  }
+}
 
 //------------------------- Provider y Contexto -------------------------
 const GameContext = createContext<GameContextType | undefined>(undefined);
@@ -165,7 +135,7 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
     //Función para navegar al menú correspondiente según el juego elegido
     const handleGoTo = () => {
       if (JuegoElegido === "impostor"){
-        router.push("/Impostor/MenuImpostor");
+        router.push("./Impostor/MenuImpostor");
       }
       if (JuegoElegido === "masomenos"){
         router.push("/MenuDeEleccion");
@@ -187,7 +157,7 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
         setImpostorIDs(selectedImpostorIDs);
         setCurrentPlayer(1);
         // Navega a la pantalla donde comienza la asignación de roles
-        router.push("/Impostor/Tarjetas");
+        router.push("/Tarjetas");
         
     };
     const handleStartGameMasOMenos = () => {
@@ -247,7 +217,7 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
     // 3. Condición de Fin de Asignación (Fase 3)
     if (nextPlayer > totalJugadores) {
       setCurrentPlayer(0); // Reinicia para seguridad
-      router.push("/Impostor/tablero"); // Navega a la pantalla final
+      router.push("/tablero"); // Navega a la pantalla final
     return;
     }
     // 2. Avanzar al siguiente jugador
@@ -260,7 +230,7 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
 
     const comenzarJuego = () => {
       setFaseJuego('jugando');
-      router.push('/Impostor/Tarjetas');
+      router.push('/Tarjetas');
     }
 
     return (
@@ -296,7 +266,6 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
             faseJuego,
             handleCategoriaClick,
             comenzarJuego,
-            RondaActual: 0,
         }}>
             {children}
         </GameContext.Provider>

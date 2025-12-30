@@ -1,5 +1,6 @@
 {
   "expo": {
+    "owner": "gonza117",
     "name": "Impostor",
     "slug": "Impostor2",
     "version": "1.2.2",
@@ -28,14 +29,7 @@
       "injectHTML": "<style>html,body,#root{height:100%;margin:0;padding:0;}</style>"
     },
     "plugins": [
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "backgroundColor": "#000000",
-          "resizeMode": "contain"
-        }
-      ]
+      "expo-router"
     ],
     "experiments": {
       "typedRoutes": true,
@@ -44,7 +38,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "36281591-e437-4fce-a852-9a097e4d073d"
+        "projectId": "cf3e1290-3c3b-49d9-8855-7e7cb529602a"
       }
     }
   }
