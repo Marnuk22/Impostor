@@ -678,7 +678,7 @@ export const CATEGORIAS_DISPONIBLES: CategoryItem[] = [
         "Franklin (GTA V)",
         "Big Smoke (GTA)"
     ]},
-    {id: "6", nombre: "Videojuegos",imagen: require("../assets/VideoJuegos.png"), items: ["Cerveza",
+    {id: "7", nombre: "Objetos",imagen: require("../assets/VideoJuegos.png"), items: ["Cerveza",
 "Gorra",
 "Carpa",
 "Llave",
@@ -1555,6 +1555,6 @@ export const CATEGORIAS_DISPONIBLES: CategoryItem[] = [
 "Rallador de nuez moscada",
 "Abrelatas",
 "Separador de yemas",
-"Dispensador de miel"]}
+"Dispenser de agua"]}
    
 ];
