@@ -157,7 +157,7 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
         setImpostorIDs(selectedImpostorIDs);
         setCurrentPlayer(1);
         // Navega a la pantalla donde comienza la asignación de roles
-        router.push("/Tarjetas");
+        router.push("./Tarjetas");
         
     };
     const handleStartGameMasOMenos = () => {

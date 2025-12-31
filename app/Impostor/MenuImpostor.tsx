@@ -51,7 +51,7 @@ export default function App() {
   }, []);
 
   const handleRenombre = () => { 
-      router.push("/Nombramiento") 
+      router.push("./Nombramiento") 
   }
   
   const handleCategorias = () => { 
