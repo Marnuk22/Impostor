@@ -678,7 +678,7 @@ export const CATEGORIAS_DISPONIBLES: CategoryItem[] = [
         "Franklin (GTA V)",
         "Big Smoke (GTA)"
     ]},
-    {id: "7", nombre: "Objetos",imagen: require("../../assets/Gemini_Generated_Image_rabyj8rabyj8raby.png"), items: ["Cerveza",
+    {id: "7", nombre: "Objetos",imagen: require("../../assets/Objetos.png"), items: ["Cerveza",
         "Gorra",
         "Carpa",
         "Llave",
