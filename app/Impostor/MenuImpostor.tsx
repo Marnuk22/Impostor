@@ -20,7 +20,7 @@ export default function App() {
 
   const MAX_IMPOSTORES = Math.max(1, Math.floor(totalJugadores / 3));
 
-  // Animaciones
+  // Animaciones del título y texto (estas sí quedan)
   const fadeTitulo = useRef(new Animated.Value(0)).current;
   const translateTitulo = useRef(new Animated.Value(-100)).current;
   const glowTitulo = useRef(new Animated.Value(0)).current;
@@ -29,7 +29,6 @@ export default function App() {
   const fadeImpostores = useRef(new Animated.Value(0)).current;
   const scaleJugadores = useRef(new Animated.Value(1)).current;
   const scaleImpostores = useRef(new Animated.Value(1)).current;
-  const pulseJugar = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
     Animated.parallel([
@@ -49,16 +48,10 @@ export default function App() {
       Animated.timing(fadeImpostores, { toValue: 1, duration: 800, useNativeDriver: true }),
     ]).start();
 
-    Animated.loop(
-      Animated.sequence([
-        Animated.timing(pulseJugar, { toValue: 1.05, duration: 800, useNativeDriver: true }),
-        Animated.timing(pulseJugar, { toValue: 1, duration: 800, useNativeDriver: true }),
-      ])
-    ).start();
   }, []);
 
   const handleRenombre = () => { 
-      router.push("/Impostor/Nombramiento") 
+      router.push("/Nombramiento") 
   }
   
   const handleCategorias = () => { 
@@ -83,7 +76,6 @@ export default function App() {
                     inputRange: [0, 1],
                     outputRange: ['#FFFFFF', '#FF0000'],
                   }),
-                  textShadowOffset: { width: 0, height: 0 },
                   textShadowRadius: glowTitulo.interpolate({
                     inputRange: [0, 1],
                     outputRange: [5, 20],
@@ -129,35 +121,25 @@ export default function App() {
             </Pressable>
           </View>
 
-          {/* INFO */}
           <Text style={styles.info}>
             JUGARAN {totalJugadores} PERSONAS CON {totalImpostores} IMPOSTORES.
           </Text>
 
-          {/* --- BOTONES FINALES --- */}
+          {/* BOTÓN JUGAR SIN ANIMACIÓN */}
+          <Pressable onPress={handleStartGame} style={styles.botonJugar}>
+            <Text style={styles.textoJugar}>JUGAR</Text>
+          </Pressable>
 
-          <Animated.View style={{ transform: [{ scale: pulseJugar }] }}>
-            <Pressable onPress={handleStartGame} style={styles.botonJugar}>
-              <Text style={styles.textoJugar}>JUGAR</Text>
-            </Pressable>
-          </Animated.View>
-
+          {/* BOTONES CHICOS SIN ANIMACIÓN */}
           <View style={styles.row}>
+            <Pressable onPress={handleRenombre} style={styles.botonChico}>
+              <Text style={styles.textoChico}>NOMBRES</Text>
+            </Pressable>
 
-            <Animated.View style={{ transform: [{ scale: pulseJugar }] }}>
-              <Pressable onPress={handleRenombre} style={styles.botonChico}>
-                <Text style={styles.textoChico}>NOMBRES</Text>
-              </Pressable>
-            </Animated.View>
-
-            <Animated.View style={{ transform: [{ scale: pulseJugar }] }}>
-              <Pressable onPress={handleCategorias} style={styles.botonChico}>
-                <Text style={styles.textoChico}>CATEGORÍAS</Text>
-              </Pressable>
-            </Animated.View>
-
+            <Pressable onPress={handleCategorias} style={styles.botonChico}>
+              <Text style={styles.textoChico}>CATEGORÍAS</Text>
+            </Pressable>
           </View>
-
 
           <StatusBar style="auto" />
         </View>
@@ -281,10 +263,6 @@ const styles = StyleSheet.create({
     marginBottom: -10,
   },
 
-  botonSmall: {
-    paddingHorizontal: 30,
-  },
-
   botonChico: {
     backgroundColor: '#000000',
     paddingVertical: 15,
@@ -302,5 +280,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     letterSpacing: 1,
   },
-
 });
+
+

@@ -1,6 +1,5 @@
 {
   "expo": {
-    "owner": "gonza117",
     "name": "Impostor",
     "slug": "Impostor2",
     "version": "1.2.2",
@@ -15,7 +14,7 @@
     "android": {
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.Marnuk22.Impostor",
+      "package": "com.marnuk22.Impostor",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#27160C"
@@ -29,7 +28,8 @@
       "injectHTML": "<style>html,body,#root{height:100%;margin:0;padding:0;}</style>"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,
@@ -38,7 +38,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "cf3e1290-3c3b-49d9-8855-7e7cb529602a"
+        "projectId": "36281591-e437-4fce-a852-9a097e4d073d"
       }
     }
   }
