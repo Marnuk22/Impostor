@@ -138,7 +138,7 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
         router.push("./Impostor/MenuImpostor");
       }
       if (JuegoElegido === "masomenos"){
-        router.push("/MenuDeEleccion");
+        router.push("./MenuDeEleccion");
       }
     };
 
@@ -161,7 +161,7 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
         
     };
     const handleStartGameMasOMenos = () => {
-      //router.push("/MasOMenos");
+      //router.push("./MasOMenos");
     };
 
     const handleStartGame = () => {
@@ -217,7 +217,7 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
     // 3. Condición de Fin de Asignación (Fase 3)
     if (nextPlayer > totalJugadores) {
       setCurrentPlayer(0); // Reinicia para seguridad
-      router.push("/tablero"); // Navega a la pantalla final
+      router.push("./tablero"); // Navega a la pantalla final
     return;
     }
     // 2. Avanzar al siguiente jugador
@@ -230,7 +230,7 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
 
     const comenzarJuego = () => {
       setFaseJuego('jugando');
-      router.push('/Tarjetas');
+      router.push('./Tarjetas');
     }
 
     return (

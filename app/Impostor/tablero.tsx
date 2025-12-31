@@ -15,7 +15,7 @@ export default function FinDelJuegoTabla() {
 
     const handleReinicio = () => {
         resetGame();
-        router.push('/Impostor/MenuImpostor');
+        router.push('./MenuImpostor');
     };
 
     return (

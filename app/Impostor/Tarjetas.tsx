@@ -76,9 +76,9 @@ export default function SlidingCard() {
             ]}
           >
             <ImageBackground
-              source={require('../../assets/images.png')}
+              source={require('../../assets/icon.png')}
               style={styles.cardBackground}
-              imageStyle={{ opacity: 0.15 }}
+              imageStyle={{ opacity: 0.4 }}
             >
               <Text style={styles.cardText}>
                 {jugadorActual?.name || `Jugador ${jugadorActual?.id}`}
@@ -101,7 +101,7 @@ export default function SlidingCard() {
             <ImageBackground
               source={require('../../assets/images.png')}
               style={styles.cardBackground}
-              imageStyle={{ opacity: 0.1 }}
+              imageStyle={{ opacity: 0.1}}
             >
               <Text style={styles.cardText}>{rolText}</Text>
             </ImageBackground>
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
   },
 
   cardBack: {
-    backgroundColor: '#7a2f2f',
+    backgroundColor: '#8f2f2fff',
   },
 
   cardBackground: {
